@@ -14,8 +14,8 @@ paginate: 5
 paginate_path: page:num
 gems: [jekyll-paginate]
 
-highlight: true
+#highlight: true
 #highlighter: pygments
-highlighter: rouge
+#highlighter: rouge
 
 host: 192.168.0.28

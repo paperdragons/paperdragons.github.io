@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "ubuntu安装搜狗输入法"
-categories: Python
+categories: [Python, test1, test2]
 excerpt: 下载地址在 http://pinyin.sogou.com/linux/ 根据你的系统选择32位或者64位
 ---
 
