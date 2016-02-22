@@ -1,99 +1,45 @@
 ---
-title: Papers Fu
-layout: landing
+layout: default
 ---
-  
-	<body class="homepage">
-	{% include header_landing.html %}
 
-		<!-- Main -->
-			<div id="main-wrapper">
-				<div class="container">
-					<div class="row">
-						<div class="12u">
+<div class="row">
+  <div class="col-sm-9 content">
+    <div class="list-group">
+      {% for post in paginator.posts %}
+      <a href="{{ post.url }}" class="list-group-item">
+        <h4>{{ post.title }}</h4>
+          <p><span class="glyphicon glyphicon-time text-date"></span> {{ post.date | date: "%Y-%m-%d %H:%M:%S" }}</p>
+        <p>{{ post.excerpt }}</p>
+      </a>
+      {% endfor %}
+    </div>
+    
+    {% if paginator.total_pages > 1 %}
+    <div class="text-center">
+      <ul class="pagination">
+        <li {% if paginator.previous_page == null %}class="disabled"{% endif %}><a href="{{ paginator.previous_page_path }}">PREV</a></li>
+        {% for page in (1..paginator.total_pages) %}
+          {% if page == 1 %}
+        <li {% if page == paginator.page %}class="active active_clr1"{% endif %}><a href="/">{{ page }}</a></li>
+          {% else %}
+        <li {% if page == paginator.page %}class="active active_clr1"{% endif %}><a href="/{{ site.paginate_path | replace: ':num', page }}">{{ page }}</a></li>
+          {% endif %}
+        {% endfor %}
+        <li {% if paginator.next_page == null %}class="disabled"{% endif %}><a href="{{ paginator.next_page_path }}">NEXT</a></li>
+      </ul>
+    </div>
+    {% endif %}
+  </div>
 
-							<!-- Portfolio -->
-								<section>
-									<header class="major">
-										<h2>My Portfolio</h2>
-									</header>
-									<div class="row">
-										<div class="4u">
-											<section class="box">
-												<a href="#" class="image featured"><img src="{{ site.baseurl }}/assets/images/pic02.jpg" alt="" /></a>
-												<header>
-													<h3>Ipsum feugiat et dolor</h3>
-												</header>
-												<p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit  adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-												<footer>
-													<a href="#" class="button alt">Find out more</a>
-												</footer>
-											</section>
-										</div>
-										<div class="4u">
-											<section class="box">
-												<a href="#" class="image featured"><img src="{{ site.baseurl }}/assets/images/pic03.jpg" alt="" /></a>
-												<header>
-													<h3>Sed etiam lorem nulla</h3>
-												</header>
-												<p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit  adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-												<footer>
-													<a href="#" class="button alt">Find out more</a>
-												</footer>
-											</section>
-										</div>
-										<div class="4u">
-											<section class="box">
-												<a href="#" class="image featured"><img src="{{ site.baseurl }}/assets/images/pic04.jpg" alt="" /></a>
-												<header>
-													<h3>Consequat et tempus</h3>
-												</header>
-												<p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit  adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-												<footer>
-													<a href="#" class="button alt">Find out more</a>
-												</footer>
-											</section>
-										</div>
-									</div>
-									<div class="row">
-										<div class="4u">
-											<section class="box">
-												<a href="#" class="image featured"><img src="{{ site.baseurl }}/assets/images/pic05.jpg" alt="" /></a>
-												<header>
-													<h3>Blandit sed adipiscing</h3>
-												</header>
-												<p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit  adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-												<footer>
-													<a href="#" class="button alt">Find out more</a>
-												</footer>
-											</section>
-										</div>
-										<div class="4u">
-											<section class="box">
-												<a href="#" class="image featured"><img src="{{ site.baseurl }}/assets/images/pic06.jpg" alt="" /></a>
-												<header>
-													<h3>Etiam nisl consequat</h3>
-												</header>
-												<p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit  adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-												<footer>
-													<a href="#" class="button alt">Find out more</a>
-												</footer>
-											</section>
-										</div>
-										<div class="4u">
-											<section class="box">
-												<a href="#" class="image featured"><img src="{{ site.baseurl }}/assets/images/pic07.jpg" alt="" /></a>
-												<header>
-													<h3>Dolore nisl feugiat</h3>
-												</header>
-												<p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit  adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-												<footer>
-													<a href="#" class="button alt">Find out more</a>
-												</footer>
-											</section>
-										</div>
-									</div>
-								</section>
+  <div class="col-sm-3 sidebar">
+    <div class="list-group">
+      <div class="text-title">Categories</div>
+      <a href="#" class="list-group-item"><span class="badge badge-danger action">{{site.posts | size}}</span>All</a>
 
-						</div>
-					</div>
+      {% for category in site.categories order:ascending %}
+        {% assign num = category[1] | size %}
+      <a href="#" class="list-group-item"><span class="badge action {% if num > 1 and num <= 2 %}badge-default{% elsif num > 2 and num <= 3 %}badge-success{% elsif num > 3 and num <= 4 %}badge-primary{% elsif num > 4 %}badge-warning{% endif %}">{{ num }}</span>{{ category[0] }}</a>
+      {% endfor %}
+    </div>
+  </div>
+</div>

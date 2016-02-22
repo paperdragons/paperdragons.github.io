@@ -1,3 +1,21 @@
-name: Paper Fu
-description: Blogs of Junchao Fu
-paginate: 10
+# Site settings
+title: Paper Fu
+email: fujunchao@supeq.com
+description: Paper's blog
+
+#url: "http://yourdomain.com" # the base hostname & protocol for your site
+twitter_username: jekyllrb
+github_username:  paperdragons
+
+# Build settings
+markdown: kramdown
+
+paginate: 5
+paginate_path: page:num
+gems: [jekyll-paginate]
+
+highlight: true
+#highlighter: pygments
+highlighter: rouge
+
+host: 192.168.0.28
