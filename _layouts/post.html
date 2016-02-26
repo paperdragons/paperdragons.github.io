@@ -6,7 +6,8 @@ layout: default
     <div class="well">
       <div class="page-header">
         <h2>{{ page.title }}</h2>
-        <p>{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+        <p>{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} •
+          {{ page.meta }}{% endif %}</p>
       </div>
       <article>
         {{content}}

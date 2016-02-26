@@ -4,23 +4,35 @@ layout: default
 
 <div class="row">
   <div class="col-sm-9 content">
-    <div class="list-group">
+    <div class="list-group" cate="All">
       {% for post in paginator.posts %}
       <a href="{{ post.url }}" class="list-group-item">
         <h4>{{ post.title }}</h4>
-          <p><span class="glyphicon glyphicon-time text-date"></span> {{ post.date | date: "%Y-%m-%d %H:%M:%S" }}</p>
+        <p><span class="glyphicon glyphicon-time text-date"></span> {{ post.date | date: "%Y-%m-%d %H:%M:%S" }}</p>
         <p>{{ post.excerpt }}</p>
       </a>
       {% endfor %}
     </div>
-    
+
+    {% for category in site.categories %}
+    <div class="list-group" cate="{{ category[0] }}">
+      {% for post in category[1] %}
+      <a href="{{ post.url }}" class="list-group-item">
+        <h4>{{ post.title }}</h4>
+        <p><span class="glyphicon glyphicon-time text-date"></span> {{ post.date | date: "%Y-%m-%d %H:%M:%S" }}</p>
+        <p>{{ post.excerpt }}</p>
+      </a>
+      {% endfor %}
+    </div>
+    {% endfor %}
+
     {% if paginator.total_pages > 1 %}
     <div class="text-center">
       <ul class="pagination">
         <li {% if paginator.previous_page == null %}class="disabled"{% endif %}><a href="{{ paginator.previous_page_path }}">PREV</a></li>
         {% for page in (1..paginator.total_pages) %}
           {% if page == 1 %}
-        <li {% if page == paginator.page %}class="active active_clr1"{% endif %}><a href="/">{{ page }}</a></li>
+        <li {% if page == paginator.page %}class="active active_clr1"{% endif %}><a href="{{ site.baseurl }}/">{{ page }}</a></li>
           {% else %}
         <li {% if page == paginator.page %}class="active active_clr1"{% endif %}><a href="/{{ site.paginate_path | replace: ':num', page }}">{{ page }}</a></li>
           {% endif %}
@@ -34,11 +46,11 @@ layout: default
   <div class="col-sm-3 sidebar">
     <div class="list-group">
       <div class="text-title">Categories</div>
-      <a href="#" class="list-group-item"><span class="badge badge-danger action">{{site.posts | size}}</span>All</a>
+      <a href="{{ site.baseurl }}/" class="list-group-item"><span class="badge badge-danger action">{{site.posts | size}}</span>All</a>
 
       {% for category in site.categories order:ascending %}
         {% assign num = category[1] | size %}
-      <a href="#" class="list-group-item"><span class="badge action {% if num > 1 and num <= 2 %}badge-default{% elsif num > 2 and num <= 3 %}badge-success{% elsif num > 3 and num <= 4 %}badge-primary{% elsif num > 4 %}badge-warning{% endif %}">{{ num }}</span>{{ category[0] }}</a>
+      <a href="#" class="list-group-item cate-choose" cate="{{ category[0] }}"><span class="badge action {% if num > 1 and num <= 2 %}badge-default{% elsif num > 2 and num <= 3 %}badge-success{% elsif num > 3 and num <= 4 %}badge-primary{% elsif num > 4 %}badge-warning{% endif %}">{{ num }}</span>{{ category[0] }}</a>
       {% endfor %}
     </div>
   </div>
