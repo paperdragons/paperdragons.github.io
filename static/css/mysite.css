@@ -1,5 +1,7 @@
+/* global css */
 body {
   background-color: rgb(241, 242, 246);
+  font-family: 'Microsoft YaHei','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 
 .text-title {
@@ -16,10 +18,8 @@ body {
   color: #fff !important;
 }
 
-#markdown-toc {
-  display: none;
-}
 
+/* index css */
 .content .list-group .list-group-item {
   padding: 10px 30px;
 }
@@ -146,6 +146,40 @@ body {
   -moz-transform: rotate(360deg) scale(1.1);
   -o-transform: rotate(360deg) scale(1.1);
   transform: rotate(360deg) scale(1.1);
+}
+
+
+/* post css */
+#markdown-toc {
+  display: none;
+}
+
+.post h1 {
+  font-size: 28px;
+}
+
+.post h2 {
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+.post article h2 {
+  font-size: 24px;
+}
+
+.post h3 {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.post h6 {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.post article, .post blockquote{
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .post .well {

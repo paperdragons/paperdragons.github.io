@@ -14,7 +14,7 @@ $(function () {
  */
 function categoryDisplay() {
   /*only show All*/
-  $(".content>div[cate!=All]").hide();
+  $(".content>div[class=list-group][cate!=All]").hide();
 
   /*show category when click categories list*/
   $(".cate-choose").click(function () {
