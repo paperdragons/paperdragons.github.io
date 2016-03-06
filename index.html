@@ -3,13 +3,14 @@ layout: default
 ---
 
 <div class="row">
-  <div class="col-sm-9 content">
+  <div class="col-sm-9 content" id="content">
     <div class="list-group" cate="All">
       {% for post in paginator.posts %}
       <a href="{{ post.url }}" class="list-group-item">
         <h4>{{ post.title }}</h4>
         <p><span class="glyphicon glyphicon-time text-date"></span> {{ post.date | date: "%Y-%m-%d %H:%M:%S" }}</p>
-        <p>{{ post.excerpt }}</p>
+        <p>{{ post.excerpt | replace: '
+', '' | replace: '<p>', '' | replace: '</p>', '' }}</p>
       </a>
       {% endfor %}
     </div>
@@ -55,3 +56,23 @@ layout: default
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  var data = {categories: []};
+  {% for category in site.categories %}
+    category = { c_name: "{{ category[0] }}", c_posts: [] };
+    {% for post in category[1] %}
+      category.c_posts.push(
+        {
+          title: "{{ post.title }}",
+          url: "{{ post.url }}",
+          date: "{{ post.date | date: "%Y-%m-%d %H:%M:%S" }}",
+          excerpt: "{{ post.excerpt | replace: '
+', '' | replace: '<p>', '' | replace: '</p>', '' }}",
+          categories: "{{ post.categories }}"
+        }
+      );
+    {% endfor %}
+    data.categories.push(category);
+  {% endfor %}
+</script>
+<script type="text/javascript" src="/build/articles.js"></script>
