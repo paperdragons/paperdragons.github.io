@@ -15,18 +15,6 @@ layout: default
       {% endfor %}
     </div>
 
-    {% for category in site.categories %}
-    <div class="list-group" cate="{{ category[0] }}">
-      {% for post in category[1] %}
-      <a href="{{ post.url }}" class="list-group-item">
-        <h4>{{ post.title }}</h4>
-        <p><span class="glyphicon glyphicon-time text-date"></span> {{ post.date | date: "%Y-%m-%d %H:%M:%S" }}</p>
-        <p>{{ post.excerpt }}</p>
-      </a>
-      {% endfor %}
-    </div>
-    {% endfor %}
-
     {% if paginator.total_pages > 1 %}
     <div class="text-center">
       <ul class="pagination">
@@ -44,30 +32,21 @@ layout: default
     {% endif %}
   </div>
 
-  <div class="col-sm-3 sidebar">
-    <div class="list-group">
-      <div class="text-title">Categories</div>
-      <a href="{{ site.baseurl }}/" class="list-group-item"><span class="badge badge-danger action">{{site.posts | size}}</span>All</a>
-
-      {% for category in site.categories order:ascending %}
-        {% assign num = category[1] | size %}
-      <a href="#" class="list-group-item cate-choose" cate="{{ category[0] }}"><span class="badge action {% if num > 1 and num <= 2 %}badge-default{% elsif num > 2 and num <= 3 %}badge-success{% elsif num > 3 and num <= 4 %}badge-primary{% elsif num > 4 %}badge-warning{% endif %}">{{ num }}</span>{{ category[0] }}</a>
-      {% endfor %}
-    </div>
+  <div class="col-sm-3 sidebar" id="sidebar">
   </div>
 </div>
 <script type="text/javascript">
-  var data = {categories: []};
+  var data = {categories: [{ c_name: "ALL", c_posts: [], size: "{{ site.posts | size }}" }]};
   {% for category in site.categories %}
-    category = { c_name: "{{ category[0] }}", c_posts: [] };
+    category = { c_name: "{{ category[0] }}", c_posts: [], size: "{{ category[1] | size }}" };
     {% for post in category[1] %}
       category.c_posts.push(
         {
           title: "{{ post.title }}",
           url: "{{ post.url }}",
           date: "{{ post.date | date: "%Y-%m-%d %H:%M:%S" }}",
-          excerpt: "{{ post.excerpt | replace: '
-', '' | replace: '<p>', '' | replace: '</p>', '' }}",
+          excerpt: '{{ post.excerpt | replace: '
+', '' | replace: '<p>', '' | replace: '</p>', '' | replace: '&gt;', '>' | replace: '&lt;', '<' }}',
           categories: "{{ post.categories }}"
         }
       );

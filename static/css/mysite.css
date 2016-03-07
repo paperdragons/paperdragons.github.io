@@ -22,6 +22,7 @@ body {
 /* index css */
 .content .list-group .list-group-item {
   padding: 10px 30px;
+  animation: moveIn 0.8s ease;
 }
 
 .content .pagination {
@@ -35,6 +36,15 @@ body {
 
 .sidebar .list-group {
   background: #fff;
+}
+
+@keyframes moveIn {
+  from {
+    width: 5%;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
 @-webkit-keyframes scaleIn {
