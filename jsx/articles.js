@@ -5,7 +5,7 @@ var Article = React.createClass({
         <a href={ post.url } className="article list-group-item">
           <h4>{ post.title }</h4>
           <p><span className="glyphicon glyphicon-time text-date"></span> { post.date }</p>
-          <p>{ post.excerpt }</p>
+          <p dangerouslySetInnerHTML={{__html: post.excerpt}}></p>
         </a>
     );
   }

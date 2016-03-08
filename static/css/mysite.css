@@ -20,9 +20,16 @@ body {
 
 
 /* index css */
+.content .list-group {
+  background-color: #fff;
+}
+
 .content .list-group .list-group-item {
   padding: 10px 30px;
-  animation: moveIn 0.8s ease;
+  -webkit-animation: moveIn 1.5s ease;
+  -moz-animation: moveIn 1.5s ease;
+  -o-animation: moveIn 1.5s ease;
+  animation: moveIn 1.5s ease;
 }
 
 .content .pagination {
@@ -38,12 +45,95 @@ body {
   background: #fff;
 }
 
+@-webkit-keyframes moveIn {
+  from {
+    -webkit-transform: skewX(30deg);
+    -moz-transform: skewX(30deg);
+    -o-transform: skewX(30deg);
+    transform:skewX(30deg);
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: skewX(0deg);
+    -moz-transform: skewX(0deg);
+    -o-transform: skewX(0deg);
+    transform:skewX(0deg);
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes moveIn {
+  from {
+    -webkit-transform: skewX(30deg);
+    -moz-transform: skewX(30deg);
+    -o-transform: skewX(30deg);
+    transform:skewX(30deg);
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: skewX(0deg);
+    -moz-transform: skewX(0deg);
+    -o-transform: skewX(0deg);
+    transform:skewX(0deg);
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+  }
+}
+
+@-o-keyframes moveIn {
+  from {
+    -webkit-transform: skewX(30deg);
+    -moz-transform: skewX(30deg);
+    -o-transform: skewX(30deg);
+    transform:skewX(30deg);
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: skewX(0deg);
+    -moz-transform: skewX(0deg);
+    -o-transform: skewX(0deg);
+    transform:skewX(0deg);
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+  }
+}
+
 @keyframes moveIn {
   from {
-    width: 5%;
+    -webkit-transform: skewX(30deg);
+    -moz-transform: skewX(30deg);
+    -o-transform: skewX(30deg);
+    transform:skewX(30deg);
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
   }
-  100% {
-    width: 100%;
+  to {
+    -webkit-transform: skewX(0deg);
+    -moz-transform: skewX(0deg);
+    -o-transform: skewX(0deg);
+    transform:skewX(0deg);
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
   }
 }
 
