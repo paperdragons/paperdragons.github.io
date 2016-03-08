@@ -19,7 +19,18 @@ layout: default
     <div class="text-center">
       <ul class="pagination">
         <li {% if paginator.previous_page == null %}class="disabled"{% endif %}><a href="{{ paginator.previous_page_path }}">PREV</a></li>
-        {% for page in (1..paginator.total_pages) %}
+
+        {% assign start = paginator.page | minus: 6 | plus: 1 %}
+        {% if start < 1 %}
+          {% assign start = 1 %}
+        {% endif %}
+        {% assign interval = paginator.total_pages | minus: start %}
+        {% if interval >= 10 %}
+          {% assign interval = 9 %}
+        {% endif %}
+        {% assign end = start | plus: interval %}
+
+        {% for page in (start..end) %}
           {% if page == 1 %}
         <li {% if page == paginator.page %}class="active active_clr1"{% endif %}><a href="{{ site.baseurl }}/">{{ page }}</a></li>
           {% else %}
