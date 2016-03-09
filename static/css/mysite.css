@@ -18,6 +18,27 @@ body {
   color: #fff !important;
 }
 
+.docs-footer {
+  background-color: #333;
+  padding: 30px 0 20px;
+  color: #99979c;
+  letter-spacing: 0.2px;
+}
+
+.docs-footer a {
+  color: #fff;
+}
+
+.docs-footer-links {
+  padding-left: 0;
+}
+
+.docs-footer-links li {
+  display: inline-block;
+}
+.docs-footer-links li+li {
+  margin-left: 10px;
+}
 
 /* index css */
 .content .list-group {
