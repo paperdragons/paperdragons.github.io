@@ -2,7 +2,7 @@
 layout: post
 title:  "test"
 date:   2016-02-22 14:58:20 +0800
-categories: [test1, test2]
+categories: [test1, test2, test3]
 excerpt: "test !"
 ---
 only test!
