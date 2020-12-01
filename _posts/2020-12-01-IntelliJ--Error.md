@@ -5,20 +5,18 @@ date:   2020-12-01 15:30:00 +0800
 categories: [IDEA]
 ---
 
-## Section 1
-### Error
+### Section 1
+- Error
 找不到libawt_xawt.so、libXrender.so、libXtst.so的问题
 
-### Resolve
+- Resolve
 ```
 apt-get install libxrender-dev
 apt-get install libxtst-dev
 ```
 
-
-
-## Section 2
-### Error
+### Section 2
+- Error
 
 ```
 Caused by: java.lang.NullPointerException
@@ -33,7 +31,7 @@ Caused by: java.lang.NullPointerException
         at java.desktop/sun.awt.X11FontManager.<init>(X11FontManager.java:56)
 ```
 
-### Resolve
+- Resolve
 
 ```
 apt-get install fontconfig
