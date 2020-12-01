@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "IntelliJ IDEA Start Error"
-date:   2020-12-01 15:30:00 +0800
+date:   2020-12-01 15:30:00 -0800
 categories: [IDEA]
 excerpt: pycharm或其他JetBrains IDEA启动时错误
 ---
